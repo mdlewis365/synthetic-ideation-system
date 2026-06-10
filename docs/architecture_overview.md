@@ -1,129 +1,228 @@
 # Architecture Overview
 
-  ## 1. System Purpose
+## 1. System Purpose
 
-  The Synthetic Ideation System, or SIS, is a governed AI-assisted ideation
-  framework for generating and evaluating novel technical concepts.
+The Synthetic Ideation System, or SIS, is a governed, user-directed
+invention-vector system for generating structured technical concepts.
 
-  SIS exists to make invention work more disciplined than unstructured
-  brainstorming. It helps users define a technical objective, explore possible
-  concept directions, and produce structured concept summaries that can support
-  later research, engineering review, or product planning.
+SIS is built around a Scientist Input Module that helps a user define an
+invention objective, constrain the exploration space, select an Invention Mode,
+select a language model, and initialize a governed generation process.
 
-  SIS is a research and development project by Michael Lewis / Synthetic OS Labs.
+The purpose of SIS is to support disciplined invention work rather than
+unstructured brainstorming. It helps turn a technical problem space into a
+structured invention or concept output that can be reviewed by a human
+researcher, engineer, or collaborator.
 
-  ## 2. Design Philosophy
+SIS is a research and development project by Michael Lewis / Synthetic OS Labs.
 
-  SIS is designed around disciplined invention workflows rather than open-ended
-  idea generation alone. The system emphasizes:
+## 2. Design Philosophy
 
-  - Governed ideation: concepts are developed within a structured process.
-  - Traceability: outputs should reflect the stated objective, constraints, and
-    reasoning context.
-  - Feasibility awareness: concepts are considered in relation to technical,
-    practical, and risk constraints.
-  - Human review: SIS supports ideation and early evaluation, but does not replace
-    engineering validation or expert judgment.
+SIS is designed around governed ideation, structured workflows, traceability,
+and feasibility awareness.
 
-  ## 3. High-Level Workflow
+The system emphasizes:
 
-  At a public architecture level, SIS follows this workflow:
+- User-directed invention: the user defines the invention vector and selects the
+  Invention Mode.
+- Structured input: required fields establish the exploration domain,
+  objective, allowed approaches, and rejection boundaries.
+- Configurable control: optional invention-control fields allow the user to
+  shape how the exploration should be constrained.
+- Governed generation: submissions are validated before generation begins.
+- Human review: SIS produces structured invention or concept outputs for review;
+  it does not replace engineering validation, safety review, or patent analysis.
 
-  1. The user defines an ideation objective or problem space.
-  2. The user selects an ideation mode.
-  3. SIS generates candidate concepts.
-  4. SIS evaluates concepts against public-safe criteria such as novelty,
-     feasibility, usefulness, constraints, and risk.
-  5. SIS produces a structured concept summary for later review or refinement.
+## 3. High-Level Workflow
 
-  This workflow is intended to help move from a broad problem space to a clearer
-  set of candidate technical directions.
+At a public architecture level, SIS follows this workflow:
 
-  ## 4. Conceptual Components
+1. Authorized scientist access is required.
+2. The user opens the Scientist Input Module.
+3. The user enters required fields:
+   - Exploration Vector
+   - Target Exploration Domain
+   - Objective Framing
+   - Allowed Approaches
+   - Reject If
+4. The user may configure optional invention-control fields:
+   - Search Forcing Function
+   - Required Structural Lens
+   - Discovery Mode
+   - Causal Necessity Condition
+   - Prior-Art Collapse Pattern
+5. The user selects a Language Model.
+6. The user selects an Invention Mode.
+7. The user initializes the vector.
+8. SIS validates the required inputs.
+9. SIS assembles private internal generation instructions.
+10. SIS validates the selected model against allowed model options.
+11. SIS starts an asynchronous generation job.
+12. SIS returns a job identifier and produces a structured governed
+    invention/concept output for human review.
 
-  ### Input Layer & Ideation Mode
+Publicly documented Invention Modes include:
 
-  The input layer captures the user's objective, context, constraints, and desired
-  type of ideation. The selected ideation mode helps shape the kind of concepts
-  and summaries produced.
+- Mechanism Discovery
+- System Architecture
+- Process Innovation
+- Algorithmic Method
+- Hybrid System Development
+- Constraint-Inversion
 
-  ### Concept Generation Layer
+This public description intentionally avoids proprietary prompt content,
+internal evaluator logic, scoring rules, model-routing details, and private
+governance mechanisms.
 
-  The concept generation layer produces candidate technical concepts based on the
-  stated objective and mode. At a high level, this layer supports exploration of
-  multiple possible invention directions rather than a single unstructured answer.
+## 4. Conceptual Components
 
-  ### Evaluation Layer
+### Scientist Input Module
 
-  The evaluation layer reviews candidate concepts in a structured way using
-  public-safe considerations such as novelty, feasibility, usefulness, constraints,
-  and risk. This overview does not disclose proprietary scoring rules, evaluator
-  logic, or internal decision mechanisms.
+The Scientist Input Module is the user-facing entry point for SIS. It collects
+the invention-vector fields, optional invention-control fields, selected
+language model, and selected Invention Mode.
 
-  ### Output/Reporting Layer
+### Required Scientist Inputs
 
-  The output layer organizes results into readable concept summaries. These
-  summaries may include the concept description, intended use, potential benefits,
-  known constraints, risks, and follow-up questions for later review.
+Required Scientist Inputs define the minimum information needed to initialize a
+governed invention vector:
 
-  ### Governance and Traceability Layer
+- Exploration Vector
+- Target Exploration Domain
+- Objective Framing
+- Allowed Approaches
+- Reject If
 
-  The governance and traceability layer supports disciplined use of the ideation
-  workflow. At a public level, this means preserving alignment between the stated
-  objective, generated concepts, evaluation context, and final summary. Private
-  governance mechanisms and implementation details are intentionally not included
-  in this repository.
+These fields establish the direction, domain, framing, permissible approaches,
+and rejection boundaries for the concept generation process.
 
-  ## 5. Public Repository Scope
+### Optional Invention-Control Fields
 
-  This public repository contains only documentation, sanitized examples, and
-  public-safe architectural notes for the Synthetic Ideation System.
+Optional invention-control fields allow the user to further constrain or shape
+the exploration:
 
-  The following materials are intentionally excluded:
+- Search Forcing Function
+- Required Structural Lens
+- Discovery Mode
+- Causal Necessity Condition
+- Prior-Art Collapse Pattern
 
-  - Proprietary engine code
-  - Proprietary prompts
-  - Scoring logic
-  - Evaluator logic
-  - Synthetic OS integrations
-  - Carter integrations
-  - Private governance mechanisms
-  - Model-routing internals
-  - Operational logs
-  - Secrets, API keys, environment variables, or private configuration details
+These controls are public-safe descriptions of user-configurable inputs. They do
+not disclose private prompt logic or internal evaluator mechanisms.
 
-  This repository is intended to communicate the public concept and architecture
-  of SIS without disclosing implementation details that would allow someone to
-  clone the full internal SIS/SOS system.
+### User-Selected Invention Mode
 
-  ## 6. Example Use Cases
+The user selects the Invention Mode. SIS does not autonomously choose the mode.
 
-  Public-safe example use cases include:
+The selected mode provides high-level direction for the type of invention work
+being requested, such as mechanism discovery, system architecture, process
+innovation, algorithmic method development, hybrid system development, or
+constraint-inversion exploration.
 
-  - Exploring technical product concepts
-  - Generating early-stage research directions
-  - Comparing alternative invention pathways
-  - Structuring brainstorming sessions
-  - Producing concept summaries for later engineering review
+### Private Prompt Assembly Layer
 
-  ## 7. Non-Goals
+After the user initializes the vector, SIS assembles a private internal master
+prompt from the validated submission. This layer is part of the private SIS
+implementation and is not documented in this repository beyond its high-level
+role.
 
-  This public repository is not:
+Proprietary prompts, prompt-construction methods, and internal instruction
+content are intentionally excluded from the public repository.
 
-  - The full SIS engine
-  - A replacement for engineering validation
-  - A guarantee of novelty, patentability, safety, or feasibility
-  - A disclosure of proprietary Synthetic OS internals
+### Model Selection and Validation Layer
 
-  SIS can support structured ideation, but technical claims still require
-  appropriate review, validation, and domain expertise.
+The user selects a language model from available options. SIS validates that the
+selected model is allowed before starting the generation job.
 
-  ## 8. Development Status
+This overview does not disclose model-routing internals, private configuration,
+provider-specific operational details, or any credentials.
 
-  SIS is an active research and development project. Public documentation may
-  evolve as the project matures, while proprietary implementation details remain
-  private.
+### Job Execution Layer
 
-  ## 9. Author
+SIS starts an asynchronous generation job after the submission and model
+selection pass validation. The system returns a job identifier for output
+handling.
 
-  Created by Michael Lewis / Synthetic OS Labs.
+This public overview does not disclose backend route names, function names,
+lock names, storage internals, operational logs, or implementation-specific job
+management details.
+
+### Output/Reporting Layer
+
+The output/reporting layer produces a structured governed invention or concept
+summary for human review. Public-safe outputs may include a concept description,
+technical framing, intended use, constraints, risks, and follow-up questions.
+
+SIS outputs are intended to support further review, not to guarantee novelty,
+patentability, feasibility, safety, or engineering readiness.
+
+### Governance and Traceability Layer
+
+The governance and traceability layer supports disciplined use of the SIS
+workflow. At a public level, this means preserving alignment between the
+submitted invention vector, selected mode, validated inputs, and structured
+output.
+
+Private governance mechanisms, internal evaluator logic, scoring rules, and
+implementation details are intentionally not disclosed.
+
+## 5. Public Repository Scope
+
+This public repository contains only documentation, sanitized examples, and
+public-safe architectural notes for the Synthetic Ideation System.
+
+The following materials are intentionally excluded:
+
+- Proprietary engine code
+- Proprietary prompts
+- Prompt-construction implementation details
+- Internal evaluator logic
+- Scoring rules
+- Synthetic OS integrations
+- Carter integrations
+- Private governance mechanisms
+- Backend route names, function names, or source-code details
+- Model-routing internals
+- Operational logs
+- API keys, secrets, environment variables, private configuration, or database
+  schemas
+
+This repository is intended to communicate the public concept and architecture
+of SIS without disclosing implementation details that would allow someone to
+clone the full internal SIS/SOS system.
+
+## 6. Example Use Cases
+
+Public-safe example use cases include:
+
+- Exploring technical product concepts
+- Generating early-stage research directions
+- Framing possible invention pathways at a high level
+- Structuring invention-focused brainstorming sessions
+- Producing concept summaries for later engineering review
+- Framing research questions for mechanism, architecture, process, algorithmic,
+  hybrid-system, or constraint-inversion exploration
+
+## 7. Non-Goals
+
+This public repository is not:
+
+- The full SIS engine
+- A replacement for engineering validation
+- A patentability or prior-art search system
+- A guarantee of novelty, patentability, safety, or feasibility
+- A disclosure of proprietary Synthetic OS internals
+- A disclosure of Carter/Synthetic OS source code or private governance logic
+
+SIS can support structured invention-vector generation, but technical claims
+still require appropriate review, validation, and domain expertise.
+
+## 8. Development Status
+
+SIS is an active research and development project. Public documentation may
+evolve as the project matures, while proprietary implementation details remain
+private.
+
+## 9. Author
+
+Created by Michael Lewis / Synthetic OS Labs.
