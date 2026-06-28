@@ -44,6 +44,9 @@ The user selects the mode. The current public workflow does not describe SIS as 
 
 This repository does not include source code, private prompts, evaluator logic, scoring rules, model-routing internals, authentication logic, route names, function names, operational logs, raw user data, private examples, database schemas, secrets, or cloneable implementation details.
 
+## Verification Without Source Code
+
+Because the production implementation is proprietary, this repository verifies the system through architecture docs, sanitized examples, validation traces, screenshots, and public-safe workflow descriptions.
 ## Human Review
 
 SIS outputs are invention candidates or research directions. They are not guarantees of novelty, patentability, feasibility, safety, engineering readiness, regulatory compliance, or commercial viability.
